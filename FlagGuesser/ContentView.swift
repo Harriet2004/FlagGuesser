@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Monaco", "Nigeria", "Poland", "Spain", "UK", "Ukraine", "US"]
+    @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Monaco", "Nigeria", "Poland", "Spain", "UK", "Ukraine", "US"].shuffled()
     @State private var answer = Int.random(in: 0..<3)
     @State private var title = " "
     @State private var scoreDisplay = false
@@ -41,6 +41,11 @@ struct ContentView: View {
             title = "Oops, that was wrong."
         }
         scoreDisplay = true
+    }
+    
+    func nextQuestion() {
+        countries.shuffled()
+        answer = Int.random(in: 0..<3)
     }
 }
 
