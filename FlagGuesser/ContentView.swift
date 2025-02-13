@@ -18,10 +18,12 @@ struct ContentView: View {
                 .ignoresSafeArea()
             VStack {
                 VStack {
-                    Text("Which is the correct flag of")
+                    Text("What is the flag of")
                         .foregroundStyle(.white)
+                        .font(.headline.weight(.heavy))
                     Text(countries[answer])
                         .foregroundStyle(.white)
+                        .font(.largeTitle.weight(.bold))
                 }
                 ForEach(0..<3) { number in
                     Button {
@@ -29,6 +31,7 @@ struct ContentView: View {
                     }
                     label: {
                         Image(countries[number])
+                            .shadow(radius: 20)
                     }
                 }
             }
@@ -49,7 +52,7 @@ struct ContentView: View {
     }
     
     func nextQuestion() {
-        countries.shuffled()
+        countries.shuffle()
         answer = Int.random(in: 0..<3)
     }
 }
