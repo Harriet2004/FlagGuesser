@@ -14,27 +14,40 @@ struct ContentView: View {
     @State private var scoreDisplay = false
     var body: some View {
         ZStack {
-            LinearGradient(colors: [.green, .blue], startPoint: .top, endPoint: .bottom)
+            LinearGradient(colors: [.black, .blue], startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
             VStack {
-                VStack {
-                    Text("What is the flag of")
-                        .foregroundStyle(.white)
-                        .font(.headline.weight(.heavy))
-                    Text(countries[answer])
-                        .foregroundStyle(.white)
-                        .font(.largeTitle.weight(.bold))
-                }
-                ForEach(0..<3) { number in
-                    Button {
-                        flagAnswer(number)
+                Text("Guess the Flag!")
+                    .foregroundStyle(.white)
+                    .font(.largeTitle.weight(.bold))
+                VStack (spacing:20) {
+                    VStack {
+                        Text("What is the flag of")
+                            .foregroundStyle(.black)
+                            .font(.headline.weight(.heavy))
+                        Text(countries[answer])
+                            .foregroundStyle(.black)
+                            .font(.largeTitle.weight(.bold))
                     }
-                    label: {
-                        Image(countries[number])
-                            .shadow(radius: 20)
+                    ForEach(0..<3) { number in
+                        Button {
+                            flagAnswer(number)
+                        }
+                        label: {
+                            Image(countries[number])
+                                .shadow(radius: 20)
+                        }
                     }
                 }
-            }
+                .frame(maxWidth: .infinity)
+                .padding(32)
+                .background(.regularMaterial)
+                .clipShape(.rect(cornerRadius:15))
+                
+                Text("Score: ")
+                    .foregroundStyle(.white)
+                    .font(.title.weight(.bold))
+            } .padding()
         }
         .alert(title, isPresented: $scoreDisplay) {
             Button("Next Question", action: nextQuestion)
