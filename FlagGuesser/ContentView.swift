@@ -8,22 +8,39 @@
 import SwiftUI
 
 struct ContentView: View {
-    let countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Monaco", "Nigeria", "Poland", "Spain", "UK", "Ukraine", "US"]
-    var answer = Int.random(in: 0..<3)
+    @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Monaco", "Nigeria", "Poland", "Spain", "UK", "Ukraine", "US"]
+    @State private var answer = Int.random(in: 0..<3)
+    @State private var title = " "
+    @State private var scoreDisplay = false
     var body: some View {
-        VStack {
+        ZStack {
+            Color.blue
+                .ignoresSafeArea()
             VStack {
-                Text("Which is the correct flag of")
-                Text(countries[answer])
-            }
-            ForEach(0..<3) { number in
-                Button {
+                VStack {
+                    Text("Which is the correct flag of")
+                        .foregroundStyle(.white)
+                    Text(countries[answer])
+                        .foregroundStyle(.white)
                 }
-                label: {
-                    Image(countries[number])
+                ForEach(0..<3) { number in
+                    Button {
+                        flagAnswer(number)
+                    }
+                    label: {
+                        Image(countries[number])
+                    }
                 }
             }
         }
+    }
+    func flagAnswer(_ number: Int) {
+        if number == answer {
+            title = "You're right!"
+        } else {
+            title = "Oops, that was wrong."
+        }
+        scoreDisplay = true
     }
 }
 
