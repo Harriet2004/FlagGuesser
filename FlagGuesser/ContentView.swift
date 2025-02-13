@@ -33,6 +33,11 @@ struct ContentView: View {
                 }
             }
         }
+        .alert(title, isPresented: $scoreDisplay) {
+            Button("Next Question", action: nextQuestionc)
+        } message: {
+            Text("")
+        }
     }
     func flagAnswer(_ number: Int) {
         if number == answer {
