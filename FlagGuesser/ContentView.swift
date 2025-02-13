@@ -14,7 +14,7 @@ struct ContentView: View {
     @State private var scoreDisplay = false
     var body: some View {
         ZStack {
-            Color.blue
+            LinearGradient(colors: [.green, .blue], startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
             VStack {
                 VStack {
@@ -34,7 +34,7 @@ struct ContentView: View {
             }
         }
         .alert(title, isPresented: $scoreDisplay) {
-            Button("Next Question", action: nextQuestionc)
+            Button("Next Question", action: nextQuestion)
         } message: {
             Text("")
         }
