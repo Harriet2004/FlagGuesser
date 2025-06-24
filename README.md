@@ -15,8 +15,3 @@ FlagGuesser is a simple basic iOS game built with SwiftUI that tests users' know
 - Open the file FlagGuesser.xcodeproj in Xcode.
 - Then build and run the project on a simulator or a physical device.
 
-## Future Improvements
-- Add a history feature to save previous bill splits.
-- Incorporate more features to accomdate various needs.
-- Include currency selection for users.
-- Add animations for a smoother UI experience.
